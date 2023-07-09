@@ -1,0 +1,2 @@
+For simplicity leap years have not been taken into account for calculating the daily interest rate.
+Therefore interest is very slightly higher ~0.3% higher on leap years. Eg 1% interest rate on leap year ~= 1.003
