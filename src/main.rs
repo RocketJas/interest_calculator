@@ -2,7 +2,7 @@ use chrono::{Duration, NaiveDate};
 use std::collections::BTreeMap;
 use std::io::{self, Write};
 use anyhow::{anyhow, Error};
-
+ 
 #[derive(Clone, Debug)]
 struct Loan {
     start_date: NaiveDate,
