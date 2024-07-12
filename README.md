@@ -1,6 +1,6 @@
 # Loan Interest Calculator
 
-This is a console application that calculates loan interest using the [simple interest formula](https://www.investopedia.com/terms/s/simple_interest.asp), for banking customers. It allows users to input loan parameters and generates daily interest information for the loan duration.
+This is a console application that calculates loan interest using the [simple interest formula](https://www.investopedia.com/terms/s/simple_interest.asp), for banking customers. It allows users to input loan parameters and generates interest information for the loan duration.
 
 ## Loan Parameters
 

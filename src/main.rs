@@ -11,13 +11,8 @@ struct Loan {
     loan_currency: String,
     base_interest_rate: f64,
     margin: f64,
-    // figure out how to add id here and if it is the right thing to do
-    // id: u32,
-    // not including total_interest in the struct as it is calculated and not set by the user, meaning if another field is changed it could get out of sync
-    // total_interest: Option<f64>,
 }
 
-/// Create a method new() for the Loan struct that takes in no values and returns a Loan with default values.
 impl Loan {
     fn new(
         start_date: NaiveDate,
@@ -26,7 +21,6 @@ impl Loan {
         loan_currency: String,
         base_interest_rate: f64,
         margin: f64,
-        // id: u32,
     ) -> Self {
         Loan {
             start_date,
@@ -35,7 +29,6 @@ impl Loan {
             loan_currency,
             base_interest_rate,
             margin,
-            // id,
         }
     }
     fn calculate_interest(&self) -> f64 {
@@ -68,8 +61,6 @@ impl Loan {
 
 #[derive(Debug)]
 struct LoanCalculator {
-    // BTreeMap is used as it is ordered by key and efficient for lookups.
-    // HashMap could be used for faster lookups but it is unordered so we do not use it here.
     loans: BTreeMap<u32, Loan>,
     next_loan_id: u32,
 }
@@ -124,8 +115,8 @@ fn main() -> Result<(), Error> {
         print!("Please enter your choice: ");
 
         let choice = get_input();
-        // print 4 new lines
-        println!("\n\n\n\n");
+        // print 2 new lines
+        println!("\n\n");
         // quick error handling for non integer input
         let choice: u32 = choice.trim().parse::<u32>().or::<u32>(Ok(999)).unwrap();
         let result = match choice {
@@ -189,7 +180,6 @@ fn create_mock_data(calculator: &mut LoanCalculator) -> Result<(), Error> {
 
 fn show_all_loans(calculator: &mut LoanCalculator) -> Result<(), Error> {
     println!("All Loans:");
-    // println!("{:?}", calculator);
     calculator.display();
     println!("\n\n\n\n");
     Ok(())
@@ -231,7 +221,6 @@ fn show_loan_with_id(calculator: &LoanCalculator, loan_id: &u32) -> Result<(), E
 fn show_loan_information(calculator: &mut LoanCalculator) -> Result<(), Error> {
     print!("Enter the Loan ID: ");
     let loan_id_input = get_input();
-    // improve error message below, "could not get loan ID form input"
     let loan_id: u32 = loan_id_input.trim().parse()?;
 
     show_loan_with_id(calculator, &loan_id)?;
@@ -247,7 +236,6 @@ fn add_loan(calculator: &mut LoanCalculator) -> Result<(), Error> {
     Ok(())
 }
 
-/// Can improve this function to allow a single input to fail and retry not all inputs
 fn create_loan() -> Result<Loan, Error> {
 
     print!("Start Date (YYYY-MM-DD): ");
